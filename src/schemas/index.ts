@@ -21,3 +21,7 @@ export const UserSchema = z.object({
   tipo_usuario: z.string(),
   accessToken: z.string()
 });
+
+export const TokenSchema = z.object({
+  Token: z.string()
+})
