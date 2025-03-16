@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { UserSchema } from "../schemas";
+import { TokenSchema } from "../schemas";
 import { cache } from "react";
 
 export const verifySession = cache(async () => {
@@ -15,12 +15,12 @@ export const verifySession = cache(async () => {
     },
   });
   const session = await req.json();
-  const result = UserSchema.safeParse(session);
+  const result = TokenSchema.safeParse(session);
   if (!result.success) {
     redirect("/admin");
   }
   return {
     user: result.data,
-    isAith: true,
+    isAuth: true,
   };
 });
